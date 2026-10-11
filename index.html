@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>document.documentElement.classList.add('js');</script>
+<title>PIXELVERSE — Enter Another Reality</title>
+<meta name="description" content="PIXELVERSE is an independent game-world studio. Fly around The Drift, a floating miniature world built in real-time 3D, open its locations and read their lore.">
+<meta name="theme-color" content="#0D0B2A">
+<link rel="canonical" href="https://pixelverse-tawny.vercel.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PIXELVERSE">
+<meta property="og:title" content="PIXELVERSE — Enter Another Reality">
+<meta property="og:description" content="We build worlds before we build games. Explore The Drift, a floating miniature world with six locations to discover.">
+<meta property="og:url" content="https://pixelverse-tawny.vercel.app/">
+<meta property="og:image" content="https://pixelverse-tawny.vercel.app/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PIXELVERSE — Enter Another Reality">
+<meta name="twitter:description" content="An independent game-world studio. Orbit a floating 3D world and uncover the lore of its six locations.">
+<meta name="twitter:image" content="https://pixelverse-tawny.vercel.app/og.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600&family=Tektur:wght@500;700;800&display=swap">
+<link rel="stylesheet" href="style.css">
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/"
+} }
+</script>
+<script type="module" src="main.js"></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="px-mark" viewBox="0 0 64 64" shape-rendering="crispEdges">
+    <rect x="44" y="4" width="8" height="8" fill="#FFE45D"/>
+    <rect x="20" y="8" width="4" height="4" fill="#FF5DA2"/>
+    <rect x="16" y="12" width="12" height="4" fill="#FF5DA2"/>
+    <rect x="12" y="16" width="20" height="4" fill="#FF5DA2"/>
+    <rect x="20" y="20" width="4" height="8" fill="#96506F"/>
+    <rect x="4" y="28" width="56" height="4" fill="#5DF2FF"/>
+    <rect x="8" y="32" width="48" height="4" fill="#7A63E0"/>
+    <rect x="12" y="36" width="40" height="4" fill="#5A45C2"/>
+    <rect x="16" y="40" width="32" height="4" fill="#4532A6"/>
+    <rect x="20" y="44" width="24" height="4" fill="#33268A"/>
+    <rect x="24" y="48" width="16" height="4" fill="#33268A"/>
+    <rect x="28" y="52" width="8" height="4" fill="#5DF2FF"/>
+    <rect x="52" y="32" width="4" height="12" fill="#5DF2FF"/>
+    <rect x="52" y="48" width="4" height="4" fill="#5DF2FF"/>
+    <rect x="52" y="56" width="4" height="4" fill="#5DF2FF"/>
+  </symbol>
+  <symbol id="i-star" viewBox="0 0 12 12" shape-rendering="crispEdges"><path d="M5 0h2v3h3v2H9v1H8v2h1v3H7V9H5v2H3V8h1V6H3V5H2V3h3z" fill="currentColor"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 12 12" shape-rendering="crispEdges"><path d="M4 1h4v1h1v3h1v6H2V5h1V2h1zm1 2v2h2V3zm0 4v2h2V7z" fill="currentColor"/></symbol>
+</svg>
+
+<header class="hud-top" data-header>
+  <a class="brand" href="#world" aria-label="PIXELVERSE home — back to the world">
+    <svg class="brand-mark" aria-hidden="true" focusable="false"><use href="#px-mark"/></svg>
+    <span class="brand-word" aria-hidden="true">PIXEL<b>VERSE</b></span>
+  </a>
+  <nav class="site-nav" aria-label="Primary">
+    <ul>
+      <li><a href="#world">World</a></li>
+      <li><a href="#pipeline">Pipeline</a></li>
+      <li><a href="#worlds">Worlds</a></li>
+      <li><a href="#quests">Quest log</a></li>
+      <li><a href="#crafts">Crafts</a></li>
+    </ul>
+  </nav>
+  <div class="hud-top-tools">
+    <a class="btn btn-sun header-cta" href="#playtest">Join the playtest</a>
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="menu" data-menu-btn>
+      <span class="menu-icon" aria-hidden="true"><i></i><i></i><i></i></span><span class="menu-label">Menu</span>
+    </button>
+  </div>
+</header>
+
+<div class="menu-panel" id="menu" hidden>
+  <p class="menu-kicker">Pause menu</p>
+  <nav aria-label="Mobile">
+    <ol class="menu-list">
+      <li><a href="#world"><span>01</span>World</a></li>
+      <li><a href="#pipeline"><span>02</span>Pipeline</a></li>
+      <li><a href="#worlds"><span>03</span>Worlds</a></li>
+      <li><a href="#quests"><span>04</span>Quest log</a></li>
+      <li><a href="#crafts"><span>05</span>Crafts</a></li>
+      <li><a href="#playtest"><span>06</span>Playtest</a></li>
+    </ol>
+  </nav>
+  <p class="menu-note">Fictional concept studio — portfolio project.</p>
+</div>
+
+<main id="main" tabindex="-1">
+
+  <!-- ============ 01 WORLD (signature) ============ -->
+  <section class="world" id="world" data-time="dusk" aria-labelledby="hero-title">
+    <div class="sky" aria-hidden="true">
+      <div class="sky-grad"></div>
+      <svg class="sky-sun" viewBox="0 0 40 40" shape-rendering="crispEdges" data-sun></svg>
+      <div class="sky-stars"></div>
+      <div class="sky-dither"></div>
+    </div>
+
+    <div class="stage" id="stage" tabindex="0" role="group" aria-roledescription="3D world" aria-label="The Drift, an interactive floating island" aria-describedby="stage-help">
+      <canvas id="world-canvas" aria-hidden="true"></canvas>
+      <div class="world-fallback" id="world-fallback" hidden></div>
+      <div class="markers" id="markers">
+        <button class="marker" type="button" data-loc="beacon" aria-label="Visit Beacon Point, location 1"><span class="mk-pin"><span class="mk-no">01</span><span class="mk-name">Beacon Point</span></span></button>
+        <button class="marker" type="button" data-loc="hushwood" aria-label="Visit Hushwood, location 2"><span class="mk-pin"><span class="mk-no">02</span><span class="mk-name">Hushwood</span></span></button>
+        <button class="marker" type="button" data-loc="gearwind" aria-label="Visit Gearwind, location 3"><span class="mk-pin"><span class="mk-no">03</span><span class="mk-name">Gearwind</span></span></button>
+        <button class="marker" type="button" data-loc="cinder" aria-label="Visit Cinder Crown, location 4"><span class="mk-pin"><span class="mk-no">04</span><span class="mk-name">Cinder Crown</span></span></button>
+        <button class="marker" type="button" data-loc="skyfall" aria-label="Visit Skyfall, location 5"><span class="mk-pin"><span class="mk-no">05</span><span class="mk-name">Skyfall</span></span></button>
+        <button class="marker" type="button" data-loc="ring" aria-label="Visit The Quiet Ring, location 6"><span class="mk-pin"><span class="mk-no">06</span><span class="mk-name">The Quiet Ring</span></span></button>
+      </div>
+      <p class="stage-hint" aria-hidden="true"><span class="hint-fine">Drag to orbit · Ctrl + scroll to zoom · click a location</span><span class="hint-coarse">Swipe sideways to orbit · pinch to zoom · tap a pin</span></p>
+    </div>
+    <p class="sr-only" id="stage-help">A floating island rendered in 3D. When this area has focus, use the left and right arrow keys to orbit, up and down to tilt, plus and minus to zoom, number keys 1 to 6 to visit a location and Escape to return to the full view. Every location can also be opened from the level select list.</p>
+
+    <div class="hero-col">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eb-dot" aria-hidden="true"></span>Independent game-world studio</p>
+        <h1 id="hero-title" class="hero-title"><span class="ht-line">Enter</span> <span class="ht-line">Another</span> <span class="ht-line ht-pink">Reality</span></h1>
+        <p class="lede">We build worlds before we build games. This is <strong>The Drift</strong>, the floating island at the heart of our first title. Pick a location, or grab the island and look around.</p>
+      </div>
+
+      <nav class="levels px" aria-labelledby="levels-title">
+        <div class="levels-head">
+          <h2 class="levels-title" id="levels-title">Level select</h2>
+          <p class="levels-count"><span data-found>0</span>/6 found</p>
+        </div>
+        <ol class="level-list">
+          <li><button class="level" type="button" data-loc="beacon"><span class="lv-no">1-1</span><span class="lv-name">Beacon Point</span><span class="lv-biome">Lighthouse</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+          <li><button class="level" type="button" data-loc="hushwood"><span class="lv-no">1-2</span><span class="lv-name">Hushwood</span><span class="lv-biome">Forest</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+          <li><button class="level" type="button" data-loc="gearwind"><span class="lv-no">1-3</span><span class="lv-name">Gearwind</span><span class="lv-biome">Village</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+          <li><button class="level" type="button" data-loc="cinder"><span class="lv-no">1-4</span><span class="lv-name">Cinder Crown</span><span class="lv-biome">Caldera</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+          <li><button class="level" type="button" data-loc="skyfall"><span class="lv-no">1-5</span><span class="lv-name">Skyfall</span><span class="lv-biome">Falls</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+          <li><button class="level" type="button" data-loc="ring"><span class="lv-no">1-6</span><span class="lv-name">The Quiet Ring</span><span class="lv-biome">Ruin</span><svg class="lv-star" aria-hidden="true" focusable="false"><use href="#i-star"/></svg></button></li>
+        </ol>
+      </nav>
+    </div>
+
+    <aside class="lore px" id="lore" aria-labelledby="lore-name" hidden>
+      <div class="lore-head">
+        <p class="lore-kicker">Location <b data-lore="no">01</b>/06 <span aria-hidden="true">·</span> <span data-lore="biome">Cloud-cliff lighthouse</span></p>
+        <button class="lore-close" type="button" data-lore-close aria-label="Close the location and return to the full world view">
+          <svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M2 2h2v1h1v1h2V3h1V2h2v2H9v1H8v2h1v1h1v2H8V9H7V8H5v1H4v1H2V8h1V7h1V5H3V4H2z" fill="currentColor"/></svg>
+        </button>
+      </div>
+      <h2 class="lore-name" id="lore-name" tabindex="-1" data-lore="name">Beacon Point</h2>
+      <p class="lore-text" data-lore="lore"></p>
+      <div class="lore-quest">
+        <p class="lq-k"><svg aria-hidden="true" focusable="false"><use href="#i-star"/></svg>Quest hook</p>
+        <p class="lq-v" data-lore="hook"></p>
+      </div>
+      <dl class="lore-facts" data-lore="facts"></dl>
+      <div class="lore-nav">
+        <button class="btn btn-ghost" type="button" data-lore-step="-1"><span aria-hidden="true">◀</span> Previous</button>
+        <button class="btn btn-ghost" type="button" data-lore-step="1">Next <span aria-hidden="true">▶</span></button>
+      </div>
+    </aside>
+
+    <div class="hud-bottom">
+      <div class="controls px" role="group" aria-label="World controls">
+        <button class="ctl" type="button" data-act="left" aria-label="Orbit left"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M7 2h1v8H7V9H6V8H5V7H4V5h1V4h1V3h1z" fill="currentColor"/></svg></button>
+        <button class="ctl" type="button" data-act="right" aria-label="Orbit right"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M4 2h1v1h1v1h1v1h1v2H7v1H6v1H5v1H4z" fill="currentColor"/></svg></button>
+        <button class="ctl" type="button" data-act="zoomin" aria-label="Zoom in"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M5 2h2v3h3v2H7v3H5V7H2V5h3z" fill="currentColor"/></svg></button>
+        <button class="ctl" type="button" data-act="zoomout" aria-label="Zoom out"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M2 5h8v2H2z" fill="currentColor"/></svg></button>
+        <button class="ctl ctl-wide" type="button" data-act="reset"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M4 1h5v1h1v1h1v5h-1v1H9v1H4V9h5V8h1V3H9V2H4v2h2v1H1V0h1v2h2z" fill="currentColor"/></svg><span>Full view</span></button>
+        <button class="ctl ctl-wide" type="button" data-act="time" aria-label="Time of day: Dusk. Change time of day"><svg viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M5 0h2v2H5zM5 10h2v2H5zM0 5h2v2H0zM10 5h2v2h-2zM4 3h4v1h1v4H8v1H4V8H3V4h1z" fill="currentColor"/></svg><span data-time-label>Dusk</span></button>
+        <button class="ctl ctl-wide" type="button" data-act="motion" aria-pressed="false"><svg class="ic-pause" viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M3 2h2v8H3zM7 2h2v8H7z" fill="currentColor"/></svg><svg class="ic-play" viewBox="0 0 12 12" aria-hidden="true" focusable="false" shape-rendering="crispEdges"><path d="M3 1h2v1h1v1h1v1h1v1h1v2H8v1H7v1H6v1H5v1H3z" fill="currentColor"/></svg><span data-motion-label>Pause motion</span></button>
+      </div>
+      <div class="progress" aria-label="Exploration progress">
+        <p class="pg-k">Map charted</p>
+        <p class="pg-pips" aria-hidden="true"><i data-pip="beacon"></i><i data-pip="hushwood"></i><i data-pip="gearwind"></i><i data-pip="cinder"></i><i data-pip="skyfall"></i><i data-pip="ring"></i></p>
+        <p class="pg-v"><span data-found>0</span> of 6 locations</p>
+      </div>
+      <p class="hud-note">Illustrative real-time 3D. The Drift is a fictional world.</p>
+    </div>
+
+    <p class="sr-only" aria-live="polite" data-announce></p>
+    <div class="toast px" role="status" aria-live="polite" data-toast hidden></div>
+  </section>
+
+  <!-- ============ 02 PIPELINE ============ -->
+  <section class="pipeline" id="pipeline" aria-labelledby="pipe-title">
+    <div class="pipe-pin">
+      <div class="pipe-intro">
+        <p class="kicker"><span class="k-no">02</span>Pipeline</p>
+        <h2 id="pipe-title" class="h2">How a world gets made</h2>
+        <p class="pipe-lede">Six stages, always in this order. The island on each card is the same one, built up a layer at a time.</p>
+        <div class="pipe-meter" aria-hidden="true"><span class="pm-k">Build</span><span class="pm-bar"><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="pm-v" data-pipe-v>1/6</span></div>
+      </div>
+      <ol class="pipe-track" data-pipe-track>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="1" role="img" aria-label="A single block of ground floating in space"></div>
+          <p class="pc-no">Stage 01 · Seed</p>
+          <h3 class="pc-title">Every world starts as one sentence</h3>
+          <p class="pc-text">The Drift began as <em>islands that wander, and the people who keep them from drifting apart</em>. If a world can't fit in a sentence, it isn't ready for a level editor.</p>
+        </li>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="2" role="img" aria-label="The block has grown into a layered island with rock strata"></div>
+          <p class="pc-no">Stage 02 · Landform</p>
+          <h3 class="pc-title">Then we give it ground</h3>
+          <p class="pc-text">Terrain is blocked out in grey boxes and walked at player height until the distances feel right: far enough to wonder about, close enough to reach.</p>
+        </li>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="3" role="img" aria-label="Trees and a pond appear on the island"></div>
+          <p class="pc-no">Stage 03 · Ecology</p>
+          <h3 class="pc-title">Life before story</h3>
+          <p class="pc-text">Plants, weather and creatures follow simple rules. Hushwood's fireflies started life as a pathfinding test and ended up as the forest's memory.</p>
+        </li>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="4" role="img" aria-label="Small houses and a windmill are added"></div>
+          <p class="pc-no">Stage 04 · Settlement</p>
+          <h3 class="pc-title">People need reasons to live here</h3>
+          <p class="pc-text">Every building answers three questions: who built it, what they fear, and what they would never throw away. Gearwind's mills exist because the island needs winding.</p>
+        </li>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="5" role="img" aria-label="Standing stones and a floating crystal mark an old ruin"></div>
+          <p class="pc-no">Stage 05 · Lore</p>
+          <h3 class="pc-title">Write the history nobody reads</h3>
+          <p class="pc-text">We write far more history than ever reaches the screen. Players rarely read it, but they feel it in where a ruin sits and what a road is called.</p>
+        </li>
+        <li class="pipe-card px">
+          <div class="pc-art" data-iso="6" role="img" aria-label="A small explorer walks a glowing path across the finished island"></div>
+          <p class="pc-no">Stage 06 · Play</p>
+          <h3 class="pc-title">Only then, the game</h3>
+          <p class="pc-text">Once a world holds together, the mechanics almost suggest themselves. In The Drift you don't level up. The island does.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ============ 03 WORLDS (save slots) ============ -->
+  <section class="worlds" id="worlds" aria-labelledby="worlds-title">
+    <div class="worlds-head">
+      <p class="kicker"><span class="k-no">03</span>Worlds</p>
+      <h2 id="worlds-title" class="h2">Choose a save file</h2>
+      <p class="worlds-lede">Three worlds in the studio, at three stages of life. Each one is built the same way: world first, game second.</p>
+      <p class="label-chip">Fictional projects · concept only</p>
+    </div>
+    <div class="slots">
+      <div class="slot-list" role="tablist" aria-label="Save files" aria-orientation="vertical">
+        <button class="slot" type="button" role="tab" id="slot-tab-1" aria-controls="slot-panel" aria-selected="true" tabindex="0" data-slot="0">
+          <span class="sl-no">File 01</span><span class="sl-name">Driftlight</span><span class="sl-status">In development</span>
+        </button>
+        <button class="slot" type="button" role="tab" id="slot-tab-2" aria-controls="slot-panel" aria-selected="false" tabindex="-1" data-slot="1">
+          <span class="sl-no">File 02</span><span class="sl-name">Undertide</span><span class="sl-status">Pre-production</span>
+        </button>
+        <button class="slot" type="button" role="tab" id="slot-tab-3" aria-controls="slot-panel" aria-selected="false" tabindex="-1" data-slot="2">
+          <span class="sl-no">File 03</span><span class="sl-name">Neon Orchard</span><span class="sl-status">Prototype</span>
+        </button>
+        <button class="slot slot-empty" type="button" role="tab" id="slot-tab-4" aria-controls="slot-panel" aria-selected="false" tabindex="-1" data-slot="3">
+          <span class="sl-no">File 04</span><span class="sl-name">Empty slot</span><span class="sl-status">New game</span>
+        </button>
+      </div>
+      <div class="slot-panel px" id="slot-panel" role="tabpanel" aria-labelledby="slot-tab-1" tabindex="0">
+        <div class="sp-cover" data-cover role="img" aria-label="Pixel-art cover for Driftlight"></div>
+        <div class="sp-body">
+          <p class="sp-genre" data-slot-genre>Exploration · Island-keeping</p>
+          <h3 class="sp-title" data-slot-title>Driftlight</h3>
+          <p class="sp-text" data-slot-text></p>
+          <dl class="sp-meta" data-slot-meta></dl>
+          <a class="btn btn-pink" href="#world" data-slot-cta>Explore The Drift</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 04 QUEST LOG ============ -->
+  <section class="quests" id="quests" aria-labelledby="quests-title">
+    <div class="quests-side">
+      <p class="kicker"><span class="k-no">04</span>Quest log</p>
+      <h2 id="quests-title" class="h2">Main quest: ship Driftlight</h2>
+      <p class="quests-lede">How the studio tracks its own progress. Open a quest to see its objectives.</p>
+      <div class="xp px" aria-hidden="true">
+        <p class="xp-k">Quest progress</p>
+        <p class="xp-bar"><i class="on"></i><i class="on"></i><i class="half"></i><i class="half"></i><i></i><i></i></p>
+        <p class="xp-v">2 complete · 2 active · 2 ahead</p>
+      </div>
+      <p class="label-chip">Fictional studio diary</p>
+    </div>
+    <ol class="quest-list">
+      <li class="quest q-done">
+        <details>
+          <summary><span class="q-ico" aria-hidden="true"><svg><use href="#i-star"/></svg></span><span class="q-no">Q1</span><span class="q-name">Make an island float</span><span class="q-state">Complete</span></summary>
+          <div class="q-body">
+            <p>A cone of rock, a slab of grass and a camera that could orbit it. We spent a full week just looking at it from different angles before adding anything else.</p>
+            <ul class="q-obj"><li class="ok">Island hangs in the sky without looking stuck there</li><li class="ok">Camera can circle it in one gesture</li><li class="ok">Underside worth looking at</li></ul>
+          </div>
+        </details>
+      </li>
+      <li class="quest q-done">
+        <details>
+          <summary><span class="q-ico" aria-hidden="true"><svg><use href="#i-star"/></svg></span><span class="q-no">Q2</span><span class="q-name">Teach the wind to carry sound</span><span class="q-state">Complete</span></summary>
+          <div class="q-body">
+            <p>Gearwind's sails now set the tempo of the soundtrack. Stand downwind of the village and the music gets a little louder.</p>
+            <ul class="q-obj"><li class="ok">Wind direction drives the mills</li><li class="ok">Mills drive the music</li><li class="ok">Nobody can tell where the music ends and the wind begins</li></ul>
+          </div>
+        </details>
+      </li>
+      <li class="quest q-active">
+        <details>
+          <summary><span class="q-ico" aria-hidden="true"></span><span class="q-no">Q3</span><span class="q-name">Populate Hushwood</span><span class="q-state">In progress</span></summary>
+          <div class="q-body">
+            <p>Fourteen creature sketches, three survivors so far. The fox stays. The fox was never in danger.</p>
+            <ul class="q-obj"><li class="ok">Fireflies remember conversations</li><li>Creatures react to the forest's hum</li><li>Night shift for the owls</li></ul>
+          </div>
+        </details>
+      </li>
+      <li class="quest q-active">
+        <details>
+          <summary><span class="q-ico" aria-hidden="true"></span><span class="q-no">Q4</span><span class="q-name">Wake the Cinder Crown</span><span class="q-state">In progress</span></summary>
+          <div class="q-body">
+            <p>A day and night cycle that changes what the island can reach. When the Crown sleeps, the Drift sinks and lower islands come into view.</p>
+            <ul class="q-obj"><li class="ok">Dusk, night and dawn lighting</li><li>Island altitude follows the Crown's breathing</li><li>Something worth finding down there</li></ul>
+          </div>
+        </details>
+      </li>
+      <li class="quest q-locked">
+        <details>
+          <summary><span class="q-ico" aria-hidden="true"><svg><use href="#i-lock"/></svg></span><span class="q-no">Q5</span><span class="q-name">Open the Quiet Ring</span><span class="q-state">Locked</span></summary>
+          <div class="q-body">
+            <p>Requires: a reason to leave. We're still writing it, and we won't open the door until the answer is good enough.</p>
+          </div>
+        </details>
+      </li>
+      <li class="quest q-next">
+        <details open>
+          <summary><span class="q-ico" aria-hidden="true"><svg><use href="#i-star"/></svg></span><span class="q-no">Q6</span><span class="q-name">Invite the first players</span><span class="q-state">Up next</span></summary>
+          <div class="q-body">
+            <p>Worlds only come alive when someone else walks around in them. This is where you come in.</p>
+            <a class="btn btn-sun" href="#playtest">Accept quest</a>
+          </div>
+        </details>
+      </li>
+    </ol>
+  </section>
+
+  <!-- ============ 05 CRAFTS (class select) ============ -->
+  <section class="crafts" id="crafts" aria-labelledby="crafts-title">
+    <div class="crafts-head">
+      <p class="kicker"><span class="k-no">05</span>Crafts</p>
+      <h2 id="crafts-title" class="h2">Choose your class</h2>
+      <p class="crafts-lede">A small studio with many hats. Every PIXELVERSE world passes through four crafts, and most of us wear at least two of them.</p>
+    </div>
+    <div class="classes">
+      <div class="class-pick" role="radiogroup" aria-label="Crafts">
+        <button class="cls" type="button" role="radio" aria-checked="true" tabindex="0" data-cls="0"><span class="cls-ava" data-sprite="worldsmith"></span><span class="cls-name">Worldsmith</span></button>
+        <button class="cls" type="button" role="radio" aria-checked="false" tabindex="-1" data-cls="1"><span class="cls-ava" data-sprite="lorekeeper"></span><span class="cls-name">Lorekeeper</span></button>
+        <button class="cls" type="button" role="radio" aria-checked="false" tabindex="-1" data-cls="2"><span class="cls-ava" data-sprite="tinker"></span><span class="cls-name">Tinker</span></button>
+        <button class="cls" type="button" role="radio" aria-checked="false" tabindex="-1" data-cls="3"><span class="cls-ava" data-sprite="bard"></span><span class="cls-name">Bard</span></button>
+      </div>
+      <div class="class-card px" aria-live="polite">
+        <div class="cc-portrait" data-cls-portrait></div>
+        <div class="cc-body">
+          <p class="cc-role" data-cls-role>Environment and level design</p>
+          <h3 class="cc-name" data-cls-name>Worldsmith</h3>
+          <p class="cc-text" data-cls-text></p>
+          <ul class="cc-abilities" data-cls-abilities></ul>
+          <p class="cc-tool"><span>Equipped with</span> <b data-cls-tool></b></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ 06 PLAYTEST ============ -->
+  <section class="playtest" id="playtest" aria-labelledby="play-title">
+    <div class="play-intro">
+      <p class="kicker"><span class="k-no">06</span>Playtest</p>
+      <h2 id="play-title" class="h2 play-title">Press start</h2>
+      <p class="play-lede">We're planning small, remote playtests of The Drift. Create a save file and tell us where you'd go first.</p>
+      <ul class="play-points">
+        <li><span aria-hidden="true">▶</span>Short sessions, played from home</li>
+        <li><span aria-hidden="true">▶</span>One world, six locations, no combat</li>
+        <li><span aria-hidden="true">▶</span>Your notes shape what the island becomes</li>
+      </ul>
+      <div class="play-crystal" aria-hidden="true" data-crystal></div>
+    </div>
+    <form class="save-form px" id="save-form" novalidate>
+      <p class="sf-head">New save file</p>
+      <div class="field">
+        <label for="f-name">Player name</label>
+        <input id="f-name" name="name" type="text" autocomplete="nickname" required maxlength="40" aria-describedby="f-name-err">
+        <p class="err" id="f-name-err" hidden></p>
+      </div>
+      <div class="field">
+        <label for="f-email">Email</label>
+        <input id="f-email" name="email" type="email" autocomplete="email" required aria-describedby="f-email-err">
+        <p class="err" id="f-email-err" hidden></p>
+      </div>
+      <div class="field-row">
+        <div class="field">
+          <label for="f-platform">Where you play</label>
+          <select id="f-platform" name="platform" required aria-describedby="f-platform-err">
+            <option value="">Choose one</option>
+            <option>PC</option>
+            <option>Console</option>
+            <option>Handheld</option>
+            <option>Whatever's nearest</option>
+          </select>
+          <p class="err" id="f-platform-err" hidden></p>
+        </div>
+        <div class="field">
+          <label for="f-first">First stop</label>
+          <select id="f-first" name="first">
+            <option value="beacon">Beacon Point</option>
+            <option value="hushwood">Hushwood</option>
+            <option value="gearwind">Gearwind</option>
+            <option value="cinder">Cinder Crown</option>
+            <option value="skyfall">Skyfall</option>
+            <option value="ring">The Quiet Ring</option>
+          </select>
+        </div>
+      </div>
+      <fieldset class="field style-set" aria-describedby="f-style-err">
+        <legend>Play style</legend>
+        <div class="chips">
+          <label class="chip"><input type="radio" name="style" value="Explorer" required><span>Explorer</span></label>
+          <label class="chip"><input type="radio" name="style" value="Builder"><span>Builder</span></label>
+          <label class="chip"><input type="radio" name="style" value="Collector"><span>Collector</span></label>
+          <label class="chip"><input type="radio" name="style" value="Storyteller"><span>Storyteller</span></label>
+        </div>
+        <p class="err" id="f-style-err" hidden></p>
+      </fieldset>
+      <div class="field check">
+        <input id="f-ok" name="ok" type="checkbox" required aria-describedby="f-ok-err">
+        <label for="f-ok">I understand this is a portfolio demo and nothing will be sent.</label>
+        <p class="err" id="f-ok-err" hidden></p>
+      </div>
+      <button class="btn btn-sun btn-big" type="submit">Create save file</button>
+      <div class="sf-done" data-done hidden tabindex="-1"></div>
+    </form>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="ft-top">
+    <p class="ft-big" aria-hidden="true">Thanks for playing</p>
+    <a class="btn btn-ghost ft-back" href="#world">Continue <span aria-hidden="true">▲</span></a>
+  </div>
+  <div class="ft-grid">
+    <div class="ft-brand">
+      <svg class="ft-mark" aria-hidden="true" focusable="false"><use href="#px-mark"/></svg>
+      <p class="ft-tag">Enter Another Reality</p>
+      <p class="ft-blurb">PIXELVERSE is an independent game-world studio. We build worlds first and find the games that live in them second.</p>
+    </div>
+    <nav class="ft-nav" aria-label="Footer">
+      <h2 class="ft-h">Menu</h2>
+      <ul>
+        <li><a href="#world">The Drift</a></li>
+        <li><a href="#pipeline">Pipeline</a></li>
+        <li><a href="#worlds">Worlds</a></li>
+        <li><a href="#quests">Quest log</a></li>
+        <li><a href="#crafts">Crafts</a></li>
+        <li><a href="#playtest">Playtest</a></li>
+      </ul>
+    </nav>
+    <div class="ft-credits">
+      <h2 class="ft-h">Credits</h2>
+      <div class="roll px">
+        <p class="roll-role">Design &amp; build</p>
+        <p class="roll-name">Designed &amp; built by <a href="https://www.linkedin.com/in/saadbashirmarketing/" target="_blank" rel="noopener" aria-label="Saad Bashir on LinkedIn (opens in a new tab)">Saad Bashir</a></p>
+        <p class="roll-note">Fictional concept brand — portfolio project.</p>
+        <a class="roll-more" href="https://saadbashirportfolio.vercel.app/websites.html">More work <span aria-hidden="true">▶</span></a>
+      </div>
+    </div>
+  </div>
+  <div class="ft-base">
+    <p>© 2026 PIXELVERSE. A concept: no real studio, game or playtest.</p>
+    <p>Built with Three.js, hand-made geometry and no images.</p>
+  </div>
+</footer>
+</body>
+</html>
